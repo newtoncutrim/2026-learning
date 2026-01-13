@@ -11,7 +11,7 @@
 Entender como a web funciona, versionar código corretamente e criar base para tudo que vem depois.
 
 ### Conteúdos
-- HTTP e REST (verbo, status code, headers)
+- HTTP e REST (verbo, status code, headers) ✅ Concluído
 - Git (básico → intermediário)
 - Expressões Regulares (Regex)
 - Linux básico
