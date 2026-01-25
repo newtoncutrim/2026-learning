@@ -13,7 +13,7 @@ Entender como a web funciona, versionar código corretamente e criar base para t
 ### Conteúdos
 - HTTP e REST (verbo, status code, headers) [YouTube](https://www.youtube.com/watch?v=9SbUPqKEWcY) ✅ Concluído
 - Git (básico → intermediário) [YouTube](https://www.youtube.com/watch?v=5NFuu4ivz-Y) 
-- Expressões Regulares (Regex)
+- Expressões Regulares (Regex) [YouTube] (https://www.youtube.com/watch?v=tlVI8mV1dQY)
 - Linux básico
 - 12 Fatores (visão geral)
 
