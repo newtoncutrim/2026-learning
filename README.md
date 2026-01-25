@@ -11,8 +11,8 @@
 Entender como a web funciona, versionar código corretamente e criar base para tudo que vem depois.
 
 ### Conteúdos
-- HTTP e REST (verbo, status code, headers) ✅ Concluído
-- Git (básico → intermediário)
+- HTTP e REST (verbo, status code, headers) [YouTube](https://www.youtube.com/watch?v=9SbUPqKEWcY) ✅ Concluído
+- Git (básico → intermediário) [YouTube](https://www.youtube.com/watch?v=5NFuu4ivz-Y) 
 - Expressões Regulares (Regex)
 - Linux básico
 - 12 Fatores (visão geral)
