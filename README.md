@@ -272,6 +272,19 @@ Fechar o ciclo fullstack com visão de produto e engenharia.
 
 ---
 
+## certificações
+
+├─ Linux (opcional) Linux Foundation – LFS101
+├─ Symfony Certification
+├─ iSAQB Foundation
+├─ Docker Certified Associate
+└─ CKAD (Kubernetes)
+├─ AWS Solutions Architect (Associate)
+├─ AWS Professional OU GCP Architect
+├─ Segurança (AWS / CKS)
+└─ SRE ou iSAQB Advanced
+
+
 ## ✅ Resultado Final
 
 Ao fim de 12 meses você:
