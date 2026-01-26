@@ -279,4 +279,3 @@ Ao fim de 12 meses você:
 * Atua como **engenheiro de software completo**
 * Defende decisões arquiteturais com clareza
 * Constrói e mantém sistemas distribuídos
-* Opera com segurança em nível **Sênior / Staff-ready**
