@@ -68,6 +68,7 @@ Entender **quando levar lógica para o banco** e os impactos reais dessa decisã
 * Problema N+1 🔁
 * Cache de resultados 🔁
 * Limites de performance do banco 🧠
+* Instancia para leitura e outra para escrita
 
 ### 🧱 Projeto do Mês
 
