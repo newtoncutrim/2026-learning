@@ -1,4 +1,4 @@
-# 🗓️ Plano de 12 Meses — Base Técnica Completa em Engenharia de Software
+# 🗓️ Plano de 24 Meses — Base Técnica Completa em Engenharia de Software
 
 > **Carga:** 1 hora por dia, todos os dias
 > **Objetivo:** Construir base sólida de engenheiro de software (**backend-heavy**, fullstack consciente, **frontend por último**)
