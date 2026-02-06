@@ -1,26 +1,24 @@
 # 🗓️ Plano de 24 Meses — Base Técnica Completa em Engenharia de Software
 
-> **Carga:** 1 hora por dia, todos os dias
-> **Objetivo:** Construir base sólida de engenheiro de software (**backend-heavy**, fullstack consciente, **frontend por último**)
+> **Carga:** 1 hora por dia, todos os dias  
+> **Objetivo:** Construir base sólida de engenheiro de software (**backend-heavy**, fullstack consciente, frontend agnóstico)
 
 ---
 
-## 🧠 Legenda de Status (baseado no seu perfil)
+## 🧠 Legenda de Status
 
-* ✅ **Já domina / prática real em produção**
-* 🔁 **Reforçar / aprofundar**
-* 🧠 **Evolução estratégica (novo nível)**
+- ✅ **Já domina / prática real em produção**
+- 🔁 **Reforçar / aprofundar**
+- 🧠 **Evolução estratégica (novo nível)**
 
 ---
 
 ## 🔴 MÊS 1 — Fundamentos de Engenharia de Software
 
 ### 🎯 Objetivo
-
-Consolidar fundamentos já utilizados no dia a dia, agora com **consciência técnica, precisão conceitual e discurso de engenheiro**.
+Consolidar fundamentos com clareza conceitual.
 
 ### Conteúdos
-
 * HTTP e REST (verbo, status code, headers) [YouTube](https://www.youtube.com/watch?v=9SbUPqKEWcY) ✅ Concluído
 * Git (básico → intermediário) 🔁 *(rebase, reflog, cherry-pick)* [YouTube](https://www.youtube.com/watch?v=5NFuu4ivz-Y) 
 * Expressões Regulares (Regex) 🔁 [YouTube](https://www.youtube.com/watch?v=tlVI8mV1dQY)
@@ -28,268 +26,253 @@ Consolidar fundamentos já utilizados no dia a dia, agora com **consciência té
 * 12 Fatores (visão arquitetural) 🔁
 
 ### 🧱 Projeto do Mês
-
-**API HTTP Playground**
-Foco em contratos HTTP claros, versionamento limpo e decisões explícitas.
+API HTTP Playground com contratos claros.
 
 ---
 
 ## 🟠 MÊS 2 — Banco de Dados Relacional (PostgreSQL)
 
 ### 🎯 Objetivo
-
-Sair do uso cotidiano e entrar no **nível engenharia de dados relacionais e consistência**.
+Elevar nível técnico em modelagem e performance.
 
 ### Conteúdos
+- Modelagem relacional 🔁  
+- Normalização / desnormalização 🔁  
+- Índices e otimização 🔁  
+- Transações e isolamento 🔁  
+- EXPLAIN / ANALYZE 🔁  
 
-* Modelagem relacional 🔁
-* Normalização e desnormalização consciente 🔁
-* Índices (B-Tree, cardinalidade, seletividade) 🔁
-* Transações e isolamento 🔁
-* EXPLAIN / ANALYZE 🔁
-
-### 🧱 Projeto do Mês
-
-**Sistema de Cadastro Financeiro**
-Modelagem previsível, queries explicáveis e decisões documentadas.
+### 🧱 Projeto
+Sistema financeiro com foco em queries performáticas.
 
 ---
 
-## 🟡 MÊS 3 — PL/SQL, Consistência e Performance
+## 🟡 MÊS 3 — Performance em Banco de Dados
 
 ### 🎯 Objetivo
-
-Entender **quando levar lógica para o banco** e os impactos reais dessa decisão.
+Entender profundamente gargalos reais de banco.
 
 ### Conteúdos
+- Query tuning 🔁  
+- Locks e concorrência 🔁  
+- Réplicas leitura/escrita 🧠  
+- Cache de consultas 🔁
+- Functions e Procedures 🔁
+- Triggers (uso responsável) 🔁
+- PL/SQL e procedures (visão geral e uso responsável) 🔁
+- Problema N+1
+- Instancia para leitura e outra para escrita
 
-* Functions e Procedures 🔁
-* Triggers (uso responsável) 🔁
-* Problema N+1 🔁
-* Cache de resultados 🔁
-* Limites de performance do banco 🧠
-* Instancia para leitura e outra para escrita
-
-### 🧱 Projeto do Mês
-
-**Auditoria e Histórico**
-Documentar trade-offs entre domínio, banco e aplicação.
+### 🧱 Projeto
+Auditoria e histórico com foco em performance.
 
 ---
 
-## 🟢 MÊS 4 — Redis, NoSQL e Concorrência
+## 🟢 MÊS 4 — Redis, Cache e Concorrência
+
+### Conteúdos
+- Redis (TTL, cache, locks distribuídos) 🔁  
+- Estratégias de cache 🧠  
+- SQL vs NoSQL 🔁  
+- MongoDB – visão prática 🧠  
+
+### 🧱 Projeto
+Camada de cache com métricas de hit/miss.
+
+---
+
+## 🟣 MÊS 5 — Engenharia de Código
 
 ### 🎯 Objetivo
-
-Pensar em **concorrência, cache, locking e escala**, não apenas CRUD.
+Elevar qualidade do código para nível profissional.
 
 ### Conteúdos
+- SOLID na prática 🧠  
+- Refatoração segura 🧠  
+- Clean Code 🔁  
+- Code Smells 🧠  
+- Design de APIs RESTful 🧠  
+- Boas práticas de OO 🔁  
+- Code Review eficaz 🧠  
 
-* Redis (cache, TTL, locks distribuídos) 🔁
-* MongoDB (modelagem orientada a acesso) 🧠
-* SQL vs NoSQL (trade-offs reais) 🔁
-
-### 🧱 Projeto do Mês
-
-**Cache Layer**
-Cache consciente, métricas de hit/miss e fallback previsível.
+### 🧱 Projeto
+Refatorar um sistema legado aplicando todos os conceitos.
 
 ---
 
-## 🔵 MÊS 5 — Arquitetura de Software
-
-### 🎯 Objetivo
-
-Transformar prática em **arquitetura defendável, evolutiva e consciente de custo**.
+## 🔵 MÊS 6 — Arquitetura de Software
 
 ### Conteúdos
 
-* Monólito Modular 🔁
-* Escala vertical vs horizontal 🔁
-* DDD (aplicação prática) 🔁
-* Bounded Context 🔁
-* Arquitetura Hexagonal (Ports & Adapters) 🧠
-* Clean × Onion × Hexagonal (comparação) 🧠
-* ADRs (Architecture Decision Records) 🧠
-* Trade-offs arquiteturais 🧠
+#### Fundamentos
+- Monólito Modular 🔁  
+- Escala vertical vs horizontal 🔁  
+- DDD na prática 🔁  
+- Bounded Context 🔁  
+- Arquitetura Hexagonal 🧠  
+- Clean × Onion × Hexagonal 🧠  
+- ADRs 🧠  
 
-### 🧱 Projeto do Mês
+#### Padrões de Projeto
 
-**Monólito Modular Evolutivo**
-Decisões arquiteturais documentadas com ADRs.
+**Criacionais**
+- Factory, Abstract Factory, Builder, Singleton, Prototype 🧠  
 
----
+**Estruturais**
+- Adapter, Decorator, Facade, Proxy, Composite 🧠  
 
-## 🟣 MÊS 6 — Backend Profissional, Domínio e Testes
+**Comportamentais**
+- Strategy, Observer, Command, Chain of Responsibility, State, Template Method 🧠  
 
-### 🎯 Objetivo
-
-Refinar design, domínio rico e **testabilidade independente de framework**.
-
-### Conteúdos
-
-* Arquitetura orientada a contratos 🔁
-* Testes unitários e integração (TDD consciente) 🔁
-* Anti-patterns de testes 🧠
-* Boundary Testing 🔁
-* Mutation Testing (conceito) 🧠
-* Rich Domain vs Anemic Model 🧠
-
-### 🧱 Projeto do Mês
-
-**API Profissional**
-Testes como contrato e domínio protegido.
+### 🧱 Projeto
+Monólito modular com ADRs e padrões aplicados.
 
 ---
 
-## 🟤 MÊS 7 — Sistemas Distribuídos, Eventos e Mensageria
+## 🟤 MÊS 7 — Testes Profissionais
 
-### 🎯 Objetivo
+- Testes unitários 🔁  
+- TDD consciente 🔁  
+- Testes de integração 🔁  
+- Mutation Testing 🧠  
+- Testabilidade independente de framework 🧠  
 
-Atuar com sistemas distribuídos **sem romantização e sem dogmas**.
-
-### Conteúdos
-
-* Microserviços 🔁
-* RabbitMQ 🔁
-* Comunicação assíncrona 🔁
-* Event-Driven Architecture 🧠
-* Domain Events vs Integration Events 🧠
-* CQRS (quando usar e quando evitar) 🧠
-* Saga Pattern (orquestrada vs coreografada) 🧠
-* Idempotência avançada 🧠
-* Retry, DLQ e backpressure 🔁
-
-### 🧱 Projeto do Mês
-
-**Sistema Assíncrono Resiliente**
-Foco em falha, consistência eventual e recuperação.
+### 🧱 Projeto
+API com cobertura robusta.
 
 ---
 
-## 🟠 MÊS 8 — DevOps e Entrega Contínua
+## 🟠 MÊS 8 — Sistemas Distribuídos
 
-### 🎯 Objetivo
+- Microserviços 🔁  
+- RabbitMQ 🔁  
+- Event-Driven Architecture 🧠  
+- CQRS e Sagas 🧠  
+- Idempotência 🧠  
 
-Reduzir dependência externa e **entender o ciclo completo de entrega**.
-
-### Conteúdos
-
-* Docker 🔁
-* Docker Compose 🔁
-* CI/CD 🔁
-* Linux para produção 🔁
-* Secrets management 🧠
-
-### 🧱 Projeto do Mês
-
-**Pipeline Automatizado Confiável**
+### 🧱 Projeto
+Sistema assíncrono resiliente.
 
 ---
 
-## ⚫ MÊS 9 — Cloud, Kubernetes e System Design
+## ⚫ MÊS 9 — DevOps Essencial
 
-### 🎯 Objetivo
-
-Rodar sistemas reais com **consciência de custo, risco e disponibilidade**.
-
-### Conteúdos
-
-* AWS (EC2, S3, IAM, VPC) 🔁
-* Kubernetes 🧠
-* Single Point of Failure 🧠
-* Autoscaling consciente 🔁
-* FinOps básico 🧠
-
-### 🧱 Projeto do Mês
-
-**Deploy em Cloud Escalável**
+- Docker 🔁  
+- Docker Compose 🔁  
+- CI/CD 🔁  
+- Secrets 🧠  
 
 ---
 
-## ⚪ MÊS 10 — Observabilidade, Confiabilidade e Segurança
+## ⚪ MÊS 10 — Cloud e Kubernetes
 
-### 🎯 Objetivo
-
-Pensar como quem **mantém sistemas vivos em produção**.
-
-### Conteúdos
-
-* Prometheus / Grafana 🧠
-* ELK / Loki 🔁
-* SLO / SLA / SLI 🧠
-* Error Budget 🧠
-* Circuit Breaker 🔁
-* Graceful Degradation 🧠
-* DevSecOps 🔁
-* OWASP Top 10 (API) 🧠
-* Threat Modeling 🧠
+- AWS básico 🔁  
+- Kubernetes 🧠  
+- Autoscaling 🧠  
 
 ---
 
-## 🟠 MÊS 11 — Frontend Fundamental (R&D)
+## 🔴 MÊS 11 — Observabilidade
 
-### 🎯 Objetivo
-
-Conhecer frontend **apenas o suficiente para integrar, proteger e escalar o backend**.
-
-### Conteúdos
-
-* JavaScript 🔁
-* TypeScript 🔁
-* HTML e CSS 🔁
-
-### 🧱 Projeto do Mês
-
-**Dashboard Técnico**
+- Logs centralizados 🔁  
+- Prometheus/Grafana 🧠  
+- SLO/SLA/SLI 🧠  
+- Circuit Breaker 🧠  
 
 ---
 
-## 🔵 MÊS 12 — Angular Avançado + Projeto Final
+## 🟠 MÊS 12 — Segurança
 
-### 🎯 Objetivo
-
-Fechar o ciclo fullstack com visão de produto e engenharia.
-
-### Conteúdos
-
-* Angular avançado 🔁
-* RxJS 🔁
-* Autenticação e autorização 🔁
-* Integração com API 🔁
-
-### 🧱 Projeto Final
-
-**Sistema SaaS Completo**
-
-**Requisitos:**
-
-* Backend escalável e resiliente
-* Frontend Angular
-* Docker + CI/CD
-* Observabilidade e métricas
-* Segurança aplicada
-* Infra as Code
+- OWASP Top 10 🧠  
+- Autenticação e autorização 🔁  
+- Threat Modeling 🧠  
 
 ---
 
-## certificações
+# 🔷 FRONTEND (APENAS BASE NECESSÁRIA)
 
-* Linux (opcional) Linux Foundation – LFS101
-* Symfony Certification
-* iSAQB Foundation
-* Docker Certified Associate
-* CKAD (Kubernetes)
-* AWS Solutions Architect (Associate)
-* AWS Professional OU GCP Architect
-* Segurança (AWS / CKS)
-* SRE ou iSAQB Advanced
+## 🟡 MÊS 13 — Fundamentos de Frontend
 
+- JavaScript moderno 🔁  
+- TypeScript 🔁  
+- HTML semântico 🔁  
+- CSS e responsividade 🔁  
+- Consumo de APIs 🔁  
+
+### 🧱 Projeto
+Dashboard simples integrado ao backend.
+
+---
+
+# 🚀 SEGUNDA METADE – APROFUNDAMENTO (14–24)
+
+## MÊS 14 — System Design
+- Desenho de sistemas reais 🧠  
+- Trade-offs de escala 🧠  
+
+## MÊS 15 — Performance Avançada
+- Profiling  
+- Load testing  
+- Tuning de aplicações  
+
+## MÊS 16 — Arquitetura Avançada
+- Event sourcing  
+- Consistência eventual  
+
+## MÊS 17 — Resiliência
+- Chaos Engineering  
+- Backpressure  
+
+## MÊS 18 — Dados e Mensageria Avançada
+- Kafka  
+- Streams  
+
+## MÊS 19 — SRE
+- Runbooks  
+- On-call  
+
+## MÊS 20 — Liderança Técnica
+- Code review avançado  
+- Mentoria  
+
+## MÊS 21 — Segurança Avançada
+- Criptografia  
+- OAuth profundo  
+
+## MÊS 22 — Especialização na Stack
+- Domínio profundo da linguagem principal  
+
+## MÊS 23 — Produto e Arquitetura
+- Decisões técnicas orientadas a negócio  
+
+## MÊS 24 — Projeto Final Master
+
+Sistema completo com:
+
+- Arquitetura evolutiva  
+- Backend escalável  
+- Observabilidade  
+- CI/CD  
+- Segurança aplicada  
+- Documentação profissional  
+
+---
+
+## Certificações Sugeridas
+
+- Linux Foundation – LFS101  
+- Docker Certified Associate  
+- CKAD – Kubernetes  
+- AWS Solutions Architect  
+- iSAQB Foundation  
+
+---
 
 ## ✅ Resultado Final
 
-Ao fim de 12 meses você:
+Ao final de 24 meses você será capaz de:
 
-* Atua como **engenheiro de software completo**
-* Defende decisões arquiteturais com clareza
-* Constrói e mantém sistemas distribuídos
+- Atuar como **engenheiro de software completo**
+- Tomar decisões arquiteturais maduras
+- Construir sistemas distribuídos confiáveis
+- Entregar soluções com qualidade profissional
