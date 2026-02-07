@@ -20,7 +20,7 @@ Consolidar fundamentos com clareza conceitual.
 
 ### Conteúdos
 * HTTP e REST (verbo, status code, headers) [YouTube](https://www.youtube.com/watch?v=9SbUPqKEWcY) ✅ Concluído
-* Git (básico → intermediário) 🔁 *(rebase, reflog, cherry-pick)* [YouTube](https://www.youtube.com/watch?v=5NFuu4ivz-Y) 
+* Git (básico → intermediário) 🔁 *(rebase, reflog, cherry-pick)* [YouTube](https://www.youtube.com/watch?v=5NFuu4ivz-Y), [YouTube2](https://www.youtube.com/watch?v=6OokP-NE49k), [doc](https://git-scm.com/docs/git#_high_level_commands_porcelain).
 * Expressões Regulares (Regex) 🔁 [YouTube](https://www.youtube.com/watch?v=tlVI8mV1dQY)
 * Linux básico (shell, processos, permissões) 🔁
 * 12 Fatores (visão arquitetural) 🔁
