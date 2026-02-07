@@ -276,3 +276,176 @@ Ao final de 24 meses você será capaz de:
 - Tomar decisões arquiteturais maduras
 - Construir sistemas distribuídos confiáveis
 - Entregar soluções com qualidade profissional
+
+======================================================================================================================
+
+# 🧩 TRILHA TÉCNICA RAIZ – BASE DE BAIXO NÍVEL
+> Complemento ao plano profissional de 24 meses  
+> Foco: fundamentos profundos de computação e engenharia
+
+**Carga recomendada:**  
+- 20 minutos por dia  
+- Projetos técnicos aos fins de semana
+
+---
+
+## 🎯 Objetivo Geral
+
+Transformar você em um programador realmente técnico:
+
+- Entender como o computador funciona por baixo  
+- Dominar memória, processos e redes  
+- Saber depurar problemas complexos  
+- Não depender apenas de frameworks  
+- Ter base sólida de ciência da computação  
+
+---
+
+# 🟢 CAMADA 1 – PROGRAMAÇÃO DE BAIXO NÍVEL  
+### (Meses 1 a 4)
+
+### Conteúdos Fundamentais
+- Introdução à linguagem C  
+- Ambiente de compilação  
+- GCC e Makefile  
+- Estrutura básica de programas  
+- Tipos primitivos  
+- Compilação e linking  
+- Ponteiros  
+- Stack x Heap  
+- Alocação de memória  
+- Arrays e strings em baixo nível  
+- Manipulação de memória  
+- Debug com gdb  
+- Valgrind  
+- Syscalls  
+- File descriptors  
+- Manipulação de arquivos  
+- I/O básico  
+
+### Projetos Técnicos
+- Hello World com Makefile  
+- Mini calculadora em C  
+- Implementar lista ligada  
+- Implementar HashMap  
+- Parser de arquivo CSV  
+
+---
+
+# 🟢 CAMADA 2 – SISTEMAS OPERACIONAIS  
+### (Meses 5 e 6)
+
+### Conteúdos
+- Processos  
+- Threads  
+- Concorrência  
+- Mutex e semáforos  
+- Scheduling  
+- Gerenciamento de memória pelo SO  
+- I/O bloqueante vs não bloqueante  
+- Comunicação entre processos  
+
+### Projetos Técnicos
+- Programa multithread em C  
+- Criar um MINI SHELL em C  
+- Simulador simples de tarefas  
+
+---
+
+# 🟢 CAMADA 3 – REDES DE COMPUTADORES  
+### (Meses 7 e 8)
+
+### Conteúdos
+- TCP x UDP  
+- Modelo OSI  
+- Sockets  
+- DNS  
+- TLS  
+- Handshake  
+- Latência e perda de pacotes  
+- Proxies e load balancing  
+
+### Projetos Técnicos
+- Cliente/servidor via socket  
+- Chat via socket em C  
+- Implementação de protocolo próprio simples  
+
+---
+
+# 🟢 CAMADA 4 – ESTRUTURAS DE DADOS E ALGORITMOS  
+### (Meses 9 e 10)
+
+### Conteúdos
+- Big O  
+- Estruturas de dados clássicas  
+- Algoritmos de ordenação  
+- Árvores  
+- Grafos  
+- BFS e DFS  
+- Hashing profundo  
+- Complexidade de algoritmos  
+
+### Projetos Técnicos
+- Implementar árvore binária  
+- Biblioteca de algoritmos em C  
+- Implementações próprias de ordenação  
+
+---
+
+# 🟢 CAMADA 5 – COMPILADORES E INTERPRETADORES  
+### (Meses 11 e 12)
+
+### Conteúdos
+- Como linguagens funcionam  
+- Lexer  
+- Parser  
+- AST  
+- Bytecode  
+- Máquina virtual  
+- Interpretadores  
+
+### Projetos Técnicos
+- Parser simples de expressões  
+- Interpretador básico  
+- Criar uma mini linguagem funcional  
+
+---
+
+# 🔧 APLICAÇÃO CONTÍNUA (Meses 13 a 24)
+
+A partir do mês 13 a trilha técnica passa a servir de base para tudo:
+
+- Analisar sistemas pensando em SO e rede  
+- Profiling de verdade  
+- Entender consistência eventual  
+- Diagnosticar falhas de rede  
+- Protocolos de mensageria  
+- Observabilidade técnica  
+- Criptografia real  
+- Dominar runtime da linguagem principal  
+
+---
+
+# 🕒 ROTINA RECOMENDADA
+
+**Durante a semana**
+- 20 min por dia de estudo técnico  
+- Exercícios práticos em C
+
+**Fim de semana**
+- 1 hora dedicada a projetos técnicos  
+- Implementação dos projetos do mês  
+
+---
+
+## 🎯 Resultado Esperado
+
+Ao final dessa trilha você será capaz de compreender de verdade:
+
+- Memória  
+- Processos  
+- Redes  
+- Sistemas operacionais  
+- Compilação  
+- Performance real   
+
