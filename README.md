@@ -74,7 +74,11 @@ Auditoria e histórico com foco em performance.
 - Redis (TTL, cache, locks distribuídos) 🔁  
 - Estratégias de cache 🧠  
 - SQL vs NoSQL 🔁  
-- MongoDB – visão prática 🧠  
+- MongoDB – visão prática 🧠
+- Programação assíncrona com PHP 🧠
+- Introdução ao Swoole 🧠
+- Corrotinas e workers no Swoole 🧠
+- Servidor HTTP com Swoole 🧠
 
 ### 🧱 Projeto
 Camada de cache com métricas de hit/miss.
@@ -111,7 +115,11 @@ Refatorar um sistema legado aplicando todos os conceitos.
 - Bounded Context 🔁  
 - Arquitetura Hexagonal 🧠  
 - Clean × Onion × Hexagonal 🧠  
-- ADRs 🧠  
+- ADRs 🧠
+- Hyperf Framework 🧠
+- Arquitetura assíncrona em PHP 🧠
+- Dependency Injection no Hyperf 🧠
+- Middlewares e servidores async 🧠
 
 #### Padrões de Projeto
 
