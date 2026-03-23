@@ -457,3 +457,6 @@ Ao final dessa trilha você será capaz de compreender de verdade:
 - Compilação  
 - Performance real   
 
+## Documentação do Projeto
+
+📄 [Abrir documentação em PDF](./docs/opsflow_documentacao_projeto.pdf)
