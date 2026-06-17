@@ -68,6 +68,207 @@ Auditoria e histórico com foco em performance.
 
 ---
 
+## 📌 Complemento de Estudo — Algoritmos de Scan e EXPLAIN
+
+### 🎯 Objetivo
+
+Entender como o banco de dados acessa os dados internamente, quando ele varre a tabela inteira e quando ele usa índice para otimizar a busca.
+
+---
+
+## 🧠 Tópicos para estudar
+
+### Scans básicos
+
+* Full Table Scan
+* Sequential Scan / Seq Scan
+* Table Scan
+* Heap Scan
+
+### Scans com índice
+
+* Index Scan
+* Index Seek
+* Index Range Scan
+* Index Only Scan
+* Covering Index
+* Unique Index Scan
+* Primary Key Index Scan
+
+### Bitmap Scans
+
+* Bitmap Index Scan
+* Bitmap Heap Scan
+* BitmapAnd
+* BitmapOr
+
+### Scans com particionamento
+
+* Partition Scan
+* Partition Pruning
+* Partition-wise Scan
+
+### Scans paralelos
+
+* Parallel Sequential Scan
+* Parallel Index Scan
+* Parallel Bitmap Heap Scan
+
+### Scans relacionados a joins
+
+* Nested Loop
+* Index Nested Loop
+* Hash Join
+* Merge Join
+
+### Scans especiais
+
+* CTE Scan
+* Subquery Scan
+* Function Scan
+* Materialized View Scan
+* Foreign Table Scan
+
+### Índices importantes para estudar junto
+
+* B-Tree
+* Hash Index
+* Bitmap Index
+* GIN
+* GiST
+* BRIN
+* R-Tree
+* Inverted Index
+
+---
+
+## 🧪 Exercício prático — Query sem índice vs com índice
+
+### 🎯 Objetivo
+
+Executar a mesma query duas vezes:
+
+1. Primeiro sem índice, para observar um `Seq Scan`
+2. Depois com índice, para observar um `Index Scan`
+
+Esse exercício serve para fixar como o banco escolhe o plano de execução.
+
+---
+
+## 1. Criar tabela de teste
+
+```sql
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    email VARCHAR(150),
+    idade INT
+);
+```
+
+---
+
+## 2. Inserir muitos registros
+
+```sql
+INSERT INTO usuarios (nome, email, idade)
+SELECT 
+    'Usuario ' || generate_series,
+    'usuario' || generate_series || '@email.com',
+    (random() * 60)::int
+FROM generate_series(1, 100000);
+```
+
+---
+
+## 3. Rodar query sem índice
+
+```sql
+EXPLAIN ANALYZE
+SELECT *
+FROM usuarios
+WHERE email = 'usuario50000@email.com';
+```
+
+### Resultado esperado
+
+```txt
+Seq Scan on usuarios
+```
+
+### Interpretação
+
+O banco precisou varrer a tabela inteira procurando o e-mail informado.
+
+---
+
+## 4. Criar índice na coluna `email`
+
+```sql
+CREATE INDEX idx_usuarios_email
+ON usuarios(email);
+```
+
+---
+
+## 5. Rodar a mesma query novamente
+
+```sql
+EXPLAIN ANALYZE
+SELECT *
+FROM usuarios
+WHERE email = 'usuario50000@email.com';
+```
+
+### Resultado esperado
+
+```txt
+Index Scan using idx_usuarios_email on usuarios
+```
+
+### Interpretação
+
+O banco usou o índice para localizar o registro de forma mais eficiente, sem precisar varrer a tabela inteira.
+
+---
+
+## 📊 Comparação
+
+| Situação                       | Plano esperado           | O que acontece                                 |
+| ------------------------------ | ------------------------ | ---------------------------------------------- |
+| Sem índice                     | `Seq Scan`               | O banco lê a tabela inteira                    |
+| Com índice                     | `Index Scan`             | O banco usa o índice para encontrar o registro |
+| Query muito seletiva           | Índice tende a ajudar    | Retorna poucos registros                       |
+| Query que retorna muitos dados | Seq Scan pode ser melhor | Índice nem sempre compensa                     |
+
+---
+
+## 🔎 O que observar no `EXPLAIN ANALYZE`
+
+* `Seq Scan`
+* `Index Scan`
+* `cost`
+* `actual time`
+* `rows`
+* `loops`
+* `Filter`
+* `Index Cond`
+
+---
+
+## ✅ Conclusão
+
+Índice não serve apenas para “deixar rápido”.
+
+Ele muda a forma como o banco acessa os dados.
+
+Sem índice, o banco tende a fazer uma varredura completa da tabela.
+
+Com índice, o banco pode localizar os registros diretamente pelo índice, reduzindo o custo da busca em tabelas grandes.
+
+Esse exercício deve ser repetido com diferentes colunas, filtros e tamanhos de tabela para fixar bem o funcionamento do `EXPLAIN ANALYZE`.
+
+
 ## 🟢 MÊS 4 — Redis, Cache e Concorrência
 
 ### Conteúdos
