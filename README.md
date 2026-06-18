@@ -661,3 +661,784 @@ Ao final dessa trilha você será capaz de compreender de verdade:
 ## Documentação do Projeto
 
 📄 [Abrir documentação em PDF](./opsflow_documentacao_projeto.pdf)
+
+# 50 Perguntas Técnicas de Vivência — Pleno/Sênior
+
+Este material reúne perguntas técnicas comuns em entrevistas para desenvolvedores nível pleno/sênior, com foco em arquitetura, segurança, performance, cache, filas, DDD, SOLID, padrões de projeto, banco de dados, CI/CD e produção.
+
+A ideia é treinar cada pergunta no formato:
+
+```markdown
+1. Contexto do problema
+2. Como eu investigaria
+3. Possíveis causas
+4. Como eu resolveria
+5. Como evitaria acontecer novamente
+```
+
+---
+
+## 1. Arquitetura de Sistemas
+
+### 1. Como você desenharia a arquitetura de um SaaS multitenant?
+
+**O que o entrevistador quer avaliar:**
+Se você entende isolamento de dados, tenant, permissões, escalabilidade e manutenção.
+
+**Pontos para responder:**
+
+* Tenant por clínica/empresa.
+* Usuários vinculados ao tenant.
+* Middleware para resolver o tenant.
+* Isolamento por `tenant_id`, banco por tenant ou schema por tenant.
+* Policies/guards para autorização.
+* Auditoria.
+* Testes garantindo que um tenant não acessa dados de outro.
+
+---
+
+### 2. Banco único ou banco por tenant: quando usar cada abordagem?
+
+**Pontos para responder:**
+
+* Banco único é mais simples e barato.
+* Banco por tenant dá mais isolamento.
+* Banco por tenant facilita backup/restauração individual.
+* Banco único exige muito cuidado com escopo por tenant.
+* A decisão depende de custo, compliance, volume e operação.
+
+---
+
+### 3. Como você separaria responsabilidades em uma aplicação grande?
+
+**Pontos para responder:**
+
+* Controller fino.
+* Service/Application Layer para casos de uso.
+* Repository/Query Object para consultas.
+* DTO/FormRequest para entrada de dados.
+* Domain para regra de negócio.
+* Jobs para tarefas assíncronas.
+* Events para desacoplamento.
+
+---
+
+### 4. Quando você criaria um microserviço?
+
+**Pontos para responder:**
+
+* Quando há domínio bem separado.
+* Quando precisa escalar de forma independente.
+* Quando precisa deployar de forma independente.
+* Quando há times diferentes.
+* Quando o módulo tem carga muito diferente do restante do sistema.
+* Evitar microserviço por moda.
+* Considerar custo operacional, observabilidade e comunicação entre serviços.
+
+---
+
+### 5. Como você projetaria um módulo de relatórios pesados?
+
+**Pontos para responder:**
+
+* Relatório assíncrono.
+* Uso de fila.
+* Status de processamento.
+* Cache do resultado.
+* Exportação para arquivo.
+* Tabelas agregadas/materialized views.
+* Evitar travar o banco transacional.
+* Notificação quando finalizar.
+
+---
+
+## 2. Performance e Gargalos
+
+### 6. Um endpoint está lento em produção. Como você investiga?
+
+**Pontos para responder:**
+
+* Ver logs e tempo de resposta.
+* Identificar queries lentas.
+* Medir CPU, RAM, disco e rede.
+* Ver chamadas externas.
+* Usar APM/tracing se existir.
+* Verificar N+1 queries.
+* Verificar locks no banco.
+* Reproduzir com carga controlada.
+
+---
+
+### 7. Um endpoint recebe muitas requisições e começa a gargalar. Como resolver?
+
+**Pontos para responder:**
+
+* Paginação.
+* Cache.
+* Rate limit.
+* Otimização de query.
+* Índices.
+* Processamento assíncrono.
+* Redução de payload.
+* Escalar horizontalmente se necessário.
+* Separar leitura e escrita em casos avançados.
+
+---
+
+### 8. Como você identifica e resolve problema de N+1 queries?
+
+**Pontos para responder:**
+
+* Analisar logs SQL.
+* Usar profiler/debugbar/APM.
+* Identificar queries repetidas dentro de loop.
+* Usar eager loading.
+* Revisar relacionamentos do ORM.
+* Criar testes ou métricas para evitar regressão.
+
+---
+
+### 9. Como você otimiza uma listagem com milhões de registros?
+
+**Pontos para responder:**
+
+* Paginação real.
+* Cursor pagination.
+* Índices corretos.
+* Filtros obrigatórios.
+* Evitar `OFFSET` muito alto.
+* Reduzir colunas retornadas.
+* Cache quando fizer sentido.
+* Busca assíncrona para casos pesados.
+
+---
+
+### 10. Como você reduziria o tempo de resposta de uma API crítica?
+
+**Pontos para responder:**
+
+* Medir antes de otimizar.
+* Identificar o gargalo principal.
+* Melhorar query.
+* Aplicar cache.
+* Remover processamento desnecessário da requisição.
+* Usar fila para tarefas demoradas.
+* Reduzir serialização/payload.
+* Melhorar infraestrutura se necessário.
+
+---
+
+## 3. Banco de Dados e Queries
+
+### 11. Como você investiga uma query lenta?
+
+**Pontos para responder:**
+
+* Usar `EXPLAIN` ou `EXPLAIN ANALYZE`.
+* Ver tipo de scan.
+* Ver linhas estimadas versus linhas reais.
+* Ver joins.
+* Ver ordenação.
+* Ver filtros.
+* Ver índices existentes.
+* Ver locks e transações abertas.
+
+---
+
+### 12. O que você observa em um `EXPLAIN ANALYZE`?
+
+**Pontos para responder:**
+
+* Tempo real.
+* Custo estimado.
+* Linhas estimadas.
+* Linhas reais.
+* Tipo de scan.
+* Uso de índice.
+* Nested loop, hash join ou merge join.
+* Sort em memória ou disco.
+* Gargalo principal do plano.
+
+---
+
+### 13. Quando um índice ajuda e quando atrapalha?
+
+**Ajuda quando:**
+
+* Existem filtros frequentes.
+* Existem joins.
+* Existe ordenação.
+* O campo possui boa seletividade.
+
+**Atrapalha quando:**
+
+* Há escrita muito intensa.
+* Existem índices duplicados.
+* A coluna tem baixa seletividade.
+* A tabela é pequena.
+* O índice nunca é usado.
+
+---
+
+### 14. Como escolher a ordem das colunas em um índice composto?
+
+**Pontos para responder:**
+
+* Colunas de igualdade primeiro.
+* Colunas mais seletivas primeiro, dependendo do caso.
+* Depois colunas de range.
+* Considerar `ORDER BY`.
+* Considerar o padrão real das queries.
+* Não criar índice no chute.
+
+---
+
+### 15. Como você investigaria deadlock ou lock no banco?
+
+**Pontos para responder:**
+
+* Ver transações abertas.
+* Ver queries bloqueadas.
+* Ver ordem dos updates.
+* Ver tempo de transação.
+* Ver índices ausentes.
+* Reduzir escopo da transação.
+* Padronizar ordem de atualização.
+* Criar retry controlado para deadlock.
+
+---
+
+## 4. Cache e Redis
+
+### 16. Quando você usaria cache em uma aplicação?
+
+**Pontos para responder:**
+
+* Dados lidos com frequência.
+* Dados que mudam pouco.
+* Queries caras.
+* Configurações.
+* Relatórios.
+* Listagens públicas.
+* Cuidado com dados sensíveis e tenant.
+
+---
+
+### 17. Como você evita cache desatualizado?
+
+**Pontos para responder:**
+
+* TTL.
+* Invalidação por evento.
+* Cache key bem definida.
+* Cache por tenant/usuário/filtro.
+* Atualizar cache após escrita.
+* Cache tags, se disponível.
+* Monitorar hit/miss.
+
+---
+
+### 18. O que é cache stampede e como resolver?
+
+**Pontos para responder:**
+
+* Muitos requests tentando recriar o mesmo cache ao mesmo tempo.
+* Usar lock.
+* TTL com jitter.
+* Stale-while-revalidate.
+* Pré-aquecimento.
+* Limitar concorrência.
+
+---
+
+### 19. Como você definiria uma chave de cache segura em sistema multitenant?
+
+**Pontos para responder:**
+
+* Incluir `tenant_id`.
+* Incluir filtros relevantes.
+* Incluir versão da regra, se necessário.
+* Evitar misturar dados entre clientes.
+* Não colocar dados sensíveis desnecessários na chave.
+
+---
+
+### 20. Quando você não usaria cache?
+
+**Pontos para responder:**
+
+* Dados mudam o tempo todo.
+* Dados altamente sensíveis.
+* Regras de invalidação muito complexas.
+* A query já é rápida.
+* O cache pode gerar inconsistência crítica.
+
+---
+
+## 5. Filas, Consumers e Mensageria
+
+### 21. Um consumer quebrou ao processar uma mensagem. Como você investiga?
+
+**Pontos para responder:**
+
+* Ver logs.
+* Ver payload.
+* Ver stack trace.
+* Ver tentativas/retries.
+* Ver DLQ/dead letter.
+* Ver se o erro é de regra, infraestrutura ou contrato.
+* Reprocessar com segurança.
+* Criar correção para evitar loop infinito.
+
+---
+
+### 22. Como evitar que uma mensagem seja processada duas vezes?
+
+**Pontos para responder:**
+
+* Idempotência.
+* Chave única.
+* Controle por `message_id` ou chave de negócio.
+* Transação.
+* Lock quando necessário.
+* `ack` somente após sucesso.
+* Garantia contra duplicidade no banco.
+
+---
+
+### 23. O que fazer com mensagens que falham várias vezes?
+
+**Pontos para responder:**
+
+* Enviar para dead letter.
+* Guardar payload e erro.
+* Alertar o time.
+* Classificar erro temporário ou definitivo.
+* Corrigir causa raiz.
+* Reprocessar com comando controlado.
+
+---
+
+### 24. Como dimensionar consumers para alto volume?
+
+**Pontos para responder:**
+
+* Medir taxa de entrada.
+* Medir taxa de consumo.
+* Aumentar workers.
+* Ajustar prefetch.
+* Separar filas por prioridade.
+* Otimizar processamento.
+* Ver gargalo no banco ou API externa.
+
+---
+
+### 25. Qual a diferença entre `ack`, `nack` e retry?
+
+**Pontos para responder:**
+
+* `ack`: mensagem processada com sucesso.
+* `nack`: falha, podendo reenfileirar ou descartar.
+* Retry: nova tentativa controlada.
+* Cuidado com loop infinito.
+* Após limite de tentativas, enviar para DLQ.
+
+---
+
+## 6. Segurança
+
+### 26. Como proteger uma API contra SQL Injection?
+
+**Pontos para responder:**
+
+* Prepared statements.
+* Query builder/ORM com bindings.
+* Nunca concatenar input diretamente no SQL.
+* Validação de entrada.
+* Permissão mínima no banco.
+* Logs e WAF como camada adicional.
+
+---
+
+### 27. Como proteger rotas administrativas?
+
+**Pontos para responder:**
+
+* Autenticação.
+* Autorização.
+* Roles/permissions.
+* Policies/gates.
+* MFA se necessário.
+* Rate limit.
+* Auditoria.
+* Nunca confiar apenas no frontend.
+
+---
+
+### 28. Como evitar vazamento de dados entre tenants?
+
+**Pontos para responder:**
+
+* Middleware de tenant.
+* Escopo obrigatório por `tenant_id`.
+* Policies.
+* Testes automatizados.
+* Índices com tenant.
+* Não confiar em IDs enviados pelo frontend.
+* Auditoria.
+
+---
+
+### 29. Como tratar upload de arquivos com segurança?
+
+**Pontos para responder:**
+
+* Validar tamanho.
+* Validar MIME real.
+* Não confiar apenas na extensão.
+* Renomear arquivo.
+* Armazenar fora da pasta pública direta.
+* Controlar permissão de download.
+* Usar antivírus quando necessário.
+* Impedir execução de arquivo enviado.
+
+---
+
+### 30. Como você lida com secrets em CI/CD?
+
+**Pontos para responder:**
+
+* GitHub Secrets.
+* Nunca commitar `.env`.
+* Rotacionar token vazado.
+* Escopo mínimo.
+* Secrets por ambiente.
+* Não imprimir secrets em logs.
+* Revisar permissões do runner.
+
+---
+
+## 7. SOLID, DDD e Código Limpo
+
+### 31. Como você aplicaria SOLID em um módulo real?
+
+**Pontos para responder:**
+
+* Classe com responsabilidade única.
+* Interfaces para dependências.
+* Evitar acoplamento forte.
+* Injeção de dependência.
+* Separar regra de negócio de infraestrutura.
+* Facilitar testes.
+
+---
+
+### 32. O que é Single Responsibility Principle na prática?
+
+**Pontos para responder:**
+
+* Uma classe deve ter um motivo principal para mudar.
+* Controller não deve conter regra complexa.
+* Service não deve misturar persistência, HTTP e regra de negócio.
+* Separar validação, regra, persistência e resposta.
+
+---
+
+### 33. Como você identificaria uma violação de Open/Closed Principle?
+
+**Pontos para responder:**
+
+* Muitos `if/else` para tipos diferentes.
+* Toda nova regra exige alterar uma classe central.
+* Resolver com Strategy, polimorfismo, handler ou rule object.
+* Código aberto para extensão e fechado para modificação.
+
+---
+
+### 34. Como você modelaria uma regra de negócio usando DDD?
+
+**Pontos para responder:**
+
+* Entidade com identidade.
+* Value Object para valores imutáveis.
+* Aggregate para consistência.
+* Domain Service quando a regra não pertence a uma entidade.
+* Repository como abstração de persistência.
+* Eventos de domínio quando algo importante acontece.
+
+---
+
+### 35. Qual a diferença entre Entity e Value Object?
+
+**Entity:**
+
+* Tem identidade.
+* Pode mudar estado.
+* Exemplo: Usuário, Clínica, Pedido.
+
+**Value Object:**
+
+* Não tem identidade própria.
+* É comparado por valor.
+* Deve ser imutável.
+* Exemplo: Dinheiro, CPF, Email, Endereço.
+
+---
+
+## 8. Padrões de Projeto
+
+### 36. Quando você usaria Strategy?
+
+**Pontos para responder:**
+
+* Quando há várias formas de executar uma regra.
+* Para evitar `if/else` grande.
+* Exemplo: cálculo por tipo de operação, formas de pagamento, regras por segmento.
+* Facilita extensão e teste.
+
+---
+
+### 37. Quando você usaria Factory?
+
+**Pontos para responder:**
+
+* Quando a criação de objetos é complexa.
+* Quando o tipo criado depende de regra.
+* Evita espalhar `new` pela aplicação.
+* Centraliza criação.
+* Facilita troca de implementação.
+
+---
+
+### 38. Quando você usaria Observer/Event?
+
+**Pontos para responder:**
+
+* Quando uma ação gera efeitos colaterais.
+* Exemplo: pedido criado → enviar e-mail, auditar, notificar.
+* Desacopla regra principal.
+* Cuidado para não esconder fluxo crítico demais.
+
+---
+
+### 39. Quando você usaria Repository?
+
+**Pontos para responder:**
+
+* Para abstrair acesso a dados.
+* Para separar domínio da persistência.
+* Para centralizar queries.
+* Para facilitar testes.
+* Cuidado para não criar repository genérico inútil.
+
+---
+
+### 40. Quando você usaria Adapter?
+
+**Pontos para responder:**
+
+* Integração com API externa.
+* Gateway de pagamento.
+* Serviço de e-mail.
+* Storage.
+* Permite trocar fornecedor sem afetar domínio.
+* Traduz contrato externo para contrato interno.
+
+---
+
+## 9. Observabilidade e Produção
+
+### 41. Como investigar um erro que só acontece em produção?
+
+**Pontos para responder:**
+
+* Logs centralizados.
+* Request ID.
+* Payload sanitizado.
+* Tracing.
+* Métricas.
+* Ver deploy recente.
+* Comparar staging/prod.
+* Criar teste reproduzindo erro.
+
+---
+
+### 42. Quais métricas você acompanha em uma API?
+
+**Pontos para responder:**
+
+* Latência p50, p95, p99.
+* Taxa de erro.
+* Throughput.
+* CPU.
+* Memória.
+* Tempo de query.
+* Conexões com banco.
+* Tamanho de fila.
+* Tempo de jobs.
+
+---
+
+### 43. O que fazer se a aplicação começa a retornar 500 após deploy?
+
+**Pontos para responder:**
+
+* Ver logs.
+* Ver alteração recente.
+* Ver migrations.
+* Ver `.env`.
+* Ver cache de config.
+* Ver permissões.
+* Fazer rollback se o impacto for alto.
+* Corrigir com hotfix.
+
+---
+
+### 44. Como você usaria logs de auditoria para investigar um bug?
+
+**Pontos para responder:**
+
+* Buscar por tenant.
+* Buscar por usuário.
+* Buscar por request ID.
+* Ver antes/depois.
+* Ver payload sanitizado.
+* Ver ordem dos eventos.
+* Cruzar com logs da aplicação.
+
+---
+
+### 45. Como você estruturaria logs para facilitar debug?
+
+**Pontos para responder:**
+
+* Request ID.
+* Tenant ID.
+* User ID.
+* Rota.
+* Status.
+* Tempo de execução.
+* Erro/stack trace.
+* Payload sanitizado.
+* Nunca logar senha/token.
+
+---
+
+## 10. CI/CD, Docker e Infraestrutura
+
+### 46. Como montar uma pipeline segura?
+
+**Pontos para responder:**
+
+* Checkout.
+* Instalar dependências.
+* Lint.
+* Testes.
+* Build.
+* Análise de segurança.
+* Deploy com aprovação.
+* Secrets protegidos.
+* Rollback.
+
+---
+
+### 47. Qual o risco de usar self-hosted runner?
+
+**Pontos para responder:**
+
+* Workflow executa comandos na sua máquina.
+* PR malicioso pode comprometer ambiente.
+* Secrets podem vazar.
+* Runner pode acessar rede interna.
+* Usar apenas em repositórios confiáveis.
+* Rodar com usuário sem privilégios.
+* Isolar por VM/container.
+
+---
+
+### 48. Como investigar um container que reinicia sozinho?
+
+**Pontos para responder:**
+
+* `docker logs`.
+* `docker inspect`.
+* Exit code.
+* Healthcheck.
+* Variáveis de ambiente.
+* Permissões de volume.
+* Falta de memória.
+* Serviço dependente indisponível.
+
+---
+
+### 49. Como fazer deploy com menor risco de downtime?
+
+**Pontos para responder:**
+
+* Build antes de trocar versão.
+* Symlink para release atual.
+* Health check.
+* Reload controlado.
+* Migrations compatíveis.
+* Rollback rápido.
+* Blue-green ou rolling deploy.
+* Monitorar após deploy.
+
+---
+
+### 50. Como lidar com migrations perigosas em produção?
+
+**Pontos para responder:**
+
+* Evitar mudanças destrutivas diretas.
+* Criar coluna nova antes de remover antiga.
+* Backfill em lotes.
+* Índice criado com cuidado.
+* Deploy em etapas.
+* Testar tempo de execução.
+* Ter plano de rollback.
+
+---
+
+## Como treinar essas perguntas
+
+Para cada pergunta, monte sua resposta neste formato:
+
+```markdown
+### Pergunta
+
+### Resposta simulada
+
+### Exemplo real ou parecido que eu vivi
+
+### Como eu investigaria
+
+### Como eu resolveria
+
+### Como eu evitaria acontecer novamente
+```
+
+Exemplo:
+
+```markdown
+### Pergunta
+
+Um consumer quebrou ao processar uma mensagem. Como você investiga?
+
+### Resposta simulada
+
+Primeiro eu verificaria os logs do consumer para entender o erro e identificar se a falha foi causada por payload inválido, regra de negócio, timeout, banco indisponível ou API externa. Depois analisaria a mensagem original, tentativas de retry e se ela foi enviada para a DLQ. Também verificaria se houve mudança de contrato entre o produtor e o consumidor.
+
+### Exemplo real ou parecido que eu vivi
+
+Em um projeto com filas, eu investiguei mensagens que falhavam por inconsistência no payload e precisei tratar melhor o erro, registrar o payload bruto e criar uma forma segura de reprocessamento.
+
+### Como eu resolveria
+
+Corrigiria a causa raiz, criaria tratamento de erro, aplicaria idempotência e garantiria que mensagens com falha definitiva fossem para dead letter.
+
+### Como eu evitaria acontecer novamente
+
+Criaria validação de contrato, logs com request ID, alerta para DLQ e testes cobrindo payloads inválidos.
+```
+
