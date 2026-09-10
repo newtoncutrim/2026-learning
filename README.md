@@ -16,9 +16,6 @@ esta ordem:
    os outros arquivos deste repo se encaixam no caminho até Arquiteto/DevOps.
 2. **[`README2.md`](./README2.md)** — o plano mês a mês (24 meses) que dá o conteúdo do
    dia a dia: o que estudar, projeto do mês, tarefas simuladas de empresa real.
-3. **[`README.md`](./README.md)** — o plano de base mais longo (36 meses), útil se você sentir
-   que algum fundamento (C, estruturas de dados, SO) precisa de reforço antes de avançar.
-
 ---
 
 ## 📁 Estrutura do repositório
